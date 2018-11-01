@@ -6,14 +6,38 @@ import java.util.ArrayList;
 
 public class Gestionnaire {
 
+	ArrayList<Utilisateur>listeUtilisateurs;
 	ArrayList<Annonce> listeAnnonces;
 	
 	public Gestionnaire() {
+		listeUtilisateurs = new ArrayList<Utilisateur>();
 		listeAnnonces = new ArrayList<Annonce>();
+	}
+	
+	public int ajouterUtilisateur(Utilisateur u) {
+		this.listeUtilisateurs.add(u);
+		return u.id;
+	}
+	
+	public void retirerUtilisateur(Utilisateur u) {
+		this.listeUtilisateurs.remove(u);
+	}
+	
+	public int existe(String pseudo, String mdp) {
+		for(Utilisateur u : listeUtilisateurs) {
+			if(u.pseudo.equals(pseudo) && u.mdp.equals(mdp)) {
+				return u.id;
+			}
+		}
+		return -1;
 	}
 	
 	public void ajouterAnnonce(Annonce a) {
 		this.listeAnnonces.add(a);
+	}
+	
+	public void retirerAnnonce(Annonce a) {
+		this.listeAnnonces.remove(a);
 	}
 	
 	public void affiche() {
