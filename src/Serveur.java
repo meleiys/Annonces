@@ -20,28 +20,73 @@ public class Serveur {
     		switch(typeRequete) {
     		case "INS": 
     			// Inscription
-    			return true;
+    			if(tab.length == 3) {
+        			return requeteInscription(tab[1], tab[2]);
+    			}
+    			else {
+    				return false;
+    			}
     		case "CON":
     			// Connexion
-    			return true;
+    			if(tab.length == 3) {
+        			return requeteConnexion(tab[1], tab[2]);
+    			}
+    			else {
+    				return false;
+    			}
     		case "DIS": 
     			// Déconnexion
-    			return true;
+        		return requeteDeconnexion();
+
     		case "SHOW":
     			// Liste des annonces
-    			return true;
+        			return requeteListeAnnonces();
     		case "DEP": 
     			// Dépôt d'annonce
-    			return true;
+    			if(tab.length == 5) {
+        			return requeteDepotDAnnonce(tab[1], tab[2], Integer.parseInt(tab[3]), Integer.parseInt(tab[4]));
+    			}
+    			else {
+    				return false;
+    			}
     		case "RET":
     			// Retirer une annonce
-    			return true;
+    			if(tab.length == 3) {
+        			return requeteRetirerAnnonce(Integer.parseInt(tab[1]), Integer.parseInt(tab[2]));
+    			}
+    			else {
+    				return false;
+    			}
     		}
     		return false;
     	}
     	catch(Exception e) {
     		return false;
     	}
+    }
+    
+    public static boolean requeteInscription(String pseudo, String mdp) {
+    	return true;
+    }
+    
+    public static boolean requeteConnexion(String pseudo, String mdp) {
+    	return true;
+    }
+    
+    public static boolean requeteDeconnexion() {
+    	return true;
+    }
+    
+    public static boolean requeteListeAnnonces() {
+    	return true;
+    }
+    
+    public static boolean requeteDepotDAnnonce(String type, String message, int prix, int port) {
+    	return true;
+    }
+    
+    public static boolean requeteRetirerAnnonce(int id_annonce, int id) {
+    	return true;
     }
     
     public static void main(String args[]) throws Exception {
